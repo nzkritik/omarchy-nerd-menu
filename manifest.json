@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "id": "nzkritik.nerd-menu",
+  "name": "Nerd Menu Icon",
+  "version": "0.1.0",
+  "author": "nzkritik",
+  "license": "MIT",
+  "description": "The Omarchy menu button with any Nerd Font icon in place of the logo, picked from a searchable grid of every glyph.",
+  "kinds": ["overlay", "bar-widget"],
+  "keepLoaded": true,
+  "entryPoints": {
+    "overlay": "Picker.qml",
+    "barWidget": "BarWidget.qml"
+  },
+  "barWidget": {
+    "displayName": "Omarchy menu (Nerd Font icon)",
+    "description": "Left click opens the Omarchy menu, right click a terminal, middle click the icon picker",
+    "category": "Compositor",
+    "allowMultiple": false,
+    "defaultSection": "left",
+    "defaults": {
+      "glyph": "",
+      "font": ""
+    },
+    "schema": [
+      {
+        "key": "glyph",
+        "type": "string",
+        "label": "Icon code point",
+        "description": "Hex code point of the Nerd Font glyph, e.g. f303 for the Arch logo. Empty shows the Omarchy logo.",
+        "defaultValue": ""
+      },
+      {
+        "key": "font",
+        "type": "string",
+        "label": "Icon font",
+        "description": "Font family to draw the icon with. Empty uses the bar font.",
+        "defaultValue": ""
+      }
+    ]
+  }
+}
