@@ -11,6 +11,25 @@ glyphs.
 - **Right click**: terminal
 - **Middle click**: icon picker
 
+## Who this is for
+
+[Omarchy](https://omarchy.org) users on the Quickshell bar (Omarchy 4+) who want
+a different menu icon than the logo: a distro logo, a favourite glyph, anything
+from the Nerd Fonts set. No extra packages are needed, because Omarchy already
+ships a Nerd Font.
+
+## What it changes
+
+Everything happens in your own config, nothing runs as root, and every step can
+be undone (see [Remove](#remove)):
+
+- The install steps put this widget in the bar's left section and disable the
+  stock `omarchy.menu` button, which keeps its files and can be re-enabled.
+- Picking an icon writes the `glyph` and `font` settings on this widget's entry
+  in `~/.config/omarchy/shell.json`, through Omarchy's own settings call.
+- The optional menu entry below is a line you add to your own
+  `~/.config/omarchy/extensions/omarchy-menu.jsonc`.
+
 ## The picker
 
 Type to search by Nerd Fonts class name (`arch`, `nf-md-ghost`, `linux tux`)
@@ -47,7 +66,7 @@ the entry whenever the widget isn't on the bar:
 ## Install
 
 ```bash
-omarchy plugin add <repo-url> --enable
+omarchy plugin add https://github.com/nzkritik/omarchy-nerd-menu --enable
 omarchy bar put nzkritik.nerd-menu --section left --index 0
 omarchy plugin disable omarchy.menu    # hide the stock button
 ```
