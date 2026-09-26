@@ -1,3 +1,4 @@
+import Quickshell
 import QtQuick
 import qs.Commons
 import qs.Ui
@@ -23,17 +24,21 @@ BarWidget {
   implicitWidth: button.implicitWidth
   implicitHeight: button.implicitHeight
 
+  // A third-party widget's `bar` has no shellQuote(), but it does carry a
+  // scoped shell that may toggle this plugin's own overlay, so no command
+  // line is built at all. The argv fallback never goes through a shell either.
   function openPicker() {
-    if (!root.bar) return
-    var payload = JSON.stringify({ widget: root.moduleName, glyph: root.glyphHex, font: root.glyphFont })
-    root.bar.run("omarchy-shell shell toggle " + root.bar.shellQuote(root.moduleName) + " " + root.bar.shellQuote(payload))
+    var payload = JSON.stringify({ glyph: root.glyphHex, font: root.glyphFont })
+    var api = root.bar ? root.bar.shell : null
+    if (api && typeof api.toggle === "function") api.toggle(root.moduleName, payload)
+    else Quickshell.execDetached(["omarchy-shell", "shell", "toggle", root.moduleName, payload])
   }
 
   WidgetButton {
     id: button
     anchors.fill: parent
     bar: root.bar
-    text: root.glyphHex ? String.fromCodePoint(parseInt(root.glyphHex, 16)) : ""
+    text: root.glyphHex ? String.fromCodePoint(parseInt(root.glyphHex, 16)) : "\ue900"
     fontFamily: !root.glyphHex ? "omarchy"
       : (root.glyphFont || (root.bar ? root.bar.fontFamily : Style.font.family))
     horizontalMargin: 7.5
