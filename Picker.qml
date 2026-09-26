@@ -53,8 +53,11 @@ Item {
   function open(payloadJson) {
     var payload = {}
     try { payload = JSON.parse(payloadJson || "{}") || {} } catch (e) {}
-    // The payload is only ever a hint for which cell to highlight.
-    root.currentHex = /^[0-9a-f]{2,6}$/.test(String(payload.glyph || "")) ? String(payload.glyph) : ""
+    // Only used to highlight the current icon. Opened from the Omarchy menu
+    // there is no payload, so fall back to the bar entry.
+    var entry = root.barEntry()
+    var current = payload.glyph !== undefined ? payload.glyph : (entry ? entry.glyph : "")
+    root.currentHex = /^[0-9a-f]{2,6}$/.test(String(current || "")) ? String(current) : ""
     root.opened = true
     root.status = ""
     root.filterText = ""

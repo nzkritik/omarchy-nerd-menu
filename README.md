@@ -32,6 +32,16 @@ You can also open the picker from a script or a key binding:
 omarchy-shell shell toggle nzkritik.nerd-menu
 ```
 
+### From the Omarchy menu
+
+To get a **Style › Menu Bar › Menu Icon** entry, add this line inside the braces
+of `~/.config/omarchy/extensions/omarchy-menu.jsonc`. The `when` condition hides
+the entry whenever the widget isn't on the bar:
+
+```jsonc
+"style.bar.icon": {"icon":"󰀻","label":"Menu Icon","aliases":["menu-icon"],"description":"Pick a Nerd Font icon for the menu button","action":"omarchy-shell shell toggle nzkritik.nerd-menu","when":"jq -e 'any(.bar.layout[][]?; .id == \"nzkritik.nerd-menu\")' \"$HOME/.config/omarchy/shell.json\" >/dev/null"},
+```
+
 ## Install
 
 ```bash
