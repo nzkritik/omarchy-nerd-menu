@@ -5,6 +5,8 @@ any [Nerd Font](https://www.nerdfonts.com/cheat-sheet) icon you pick in place of
 the Omarchy logo. You pick the icon from a searchable grid of all 10,600+
 glyphs.
 
+![The icon picker, opened from the bar](preview.png)
+
 - **Left click**: Omarchy menu
 - **Right click**: terminal
 - **Middle click**: icon picker

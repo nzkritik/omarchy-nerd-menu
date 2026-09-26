@@ -306,7 +306,7 @@ Item {
           Row {
             id: tabRow
             height: parent.height
-            spacing: Style.space(4)
+            spacing: Style.space(2)
 
             Repeater {
               model: GlyphSearch.SETS
@@ -318,7 +318,7 @@ Item {
                 readonly property bool current: index === root.setIndex
 
                 height: tabRow.height
-                width: tabLabel.implicitWidth + Style.spacing.md * 2
+                width: tabLabel.implicitWidth + Style.spacing.sm * 2
                 radius: root.cornerRadius
                 color: current ? root.selectedBackground : "transparent"
                 onCurrentChanged: if (current) tabs.contentX = Math.max(0, Math.min(x - Style.spacing.md, tabs.contentWidth - tabs.width))
