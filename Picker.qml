@@ -2,6 +2,7 @@ import Quickshell
 import Quickshell.Wayland
 import QtQuick
 import qs.Commons
+import qs.Commons as Commons
 import qs.Ui
 import "Glyphs.js" as Glyphs
 import "GlyphSearch.js" as GlyphSearch
@@ -28,13 +29,13 @@ Item {
   readonly property var selectedGlyph: cursorActive && selectedIndex >= 0 && selectedIndex < results.length
     ? results[selectedIndex] : null
 
-  property color background: Color.menu.background
-  property color foreground: Color.menu.text
-  property color border: Color.menu.border
+  property color background: Commons.Color.menu.background
+  property color foreground: Commons.Color.menu.text
+  property color border: Commons.Color.menu.border
   property var borderSpec: Border.surfaceSpec("menu", "border", border, Math.max(1, Style.space(2)))
-  property color scrim: Color.menu.scrim
-  property color selectedBackground: Color.menu.selectedBackground
-  property color selectedText: Color.menu.selectedText
+  property color scrim: Commons.Color.menu.scrim
+  property color selectedBackground: Commons.Color.menu.selectedBackground
+  property color selectedText: Commons.Color.menu.selectedText
   readonly property int cornerRadius: Style.cornerRadius
   property string fontFamily: Style.font.menuFamily
   property string glyphFamily: Style.font.family
@@ -463,7 +464,7 @@ Item {
                   + "   " + GlyphSearch.codePointLabel(root.selectedGlyph)
                   + (root.selectedGlyph.h === root.currentHex ? "   · current" : "")
                 : "")
-              color: root.status ? Color.urgent : root.foreground
+              color: root.status ? Commons.Color.urgent : root.foreground
               font.family: root.fontFamily
               font.pixelSize: Style.font.title
             }
