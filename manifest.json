@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "nzkritik.nerd-menu",
   "name": "Nerd Menu Icon",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "nzkritik",
   "license": "MIT",
   "description": "The Omarchy menu button with any Nerd Font icon in place of the logo, picked from a searchable grid of every glyph.",
